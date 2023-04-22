@@ -6,7 +6,7 @@ import {getArticles} from '../lib/low'
 import Link from 'next/link';
 import Date from '../components/date';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const allPostsData = getSortedPostsData();
   const articles= await getArticles();
   return {
@@ -34,6 +34,7 @@ export default function Home({ allPostsData , articles}) {
         <h2 className={utilStyles.headingLg}>Blog</h2>
         
         <ul  className={utilStyles.list}>
+           {console.log("posts", articles)}
           {articles.map((article, idx)=>(
             <li className={utilStyles.listItem} key={idx}>{idx}{ article}</li>
             // {console.log(idx,article)}
@@ -42,7 +43,7 @@ export default function Home({ allPostsData , articles}) {
         </ul>
   
         <ul className={utilStyles.list}>
-        {/* {console.log("posts", articles)} */}
+       
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
             <Link href={`/posts/${id}`}>{title}</Link>
