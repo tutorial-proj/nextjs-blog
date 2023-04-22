@@ -35,7 +35,7 @@ export default function Home({ allPostsData , articles}) {
         
         <ul  className={utilStyles.list}>
           {articles.map((article, idx)=>(
-            <li className={utilStyles.listItem} key={idx}>{article}</li>
+            <li className={utilStyles.listItem} key={idx}>{idx}{ article}</li>
             // {console.log(idx,article)}
 
           ))}
